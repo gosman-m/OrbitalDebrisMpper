@@ -58,9 +58,9 @@ class DataHandler:
         return location.sublat/ephem.degree, location.sublong/ephem.degree
 
     def convert(self, lat, lon):
-        x = (1280/2*lat)/180
-        x = 1280 - x
-        y = (720/2*lat)/90
-        y = 720 - y
+        x = lat / 0.28125
+        x = 1280/2 + x
+        y = lon / 0.28125
+        y = 720/2 + y
 
         return x, y

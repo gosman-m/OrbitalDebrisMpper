@@ -30,8 +30,8 @@ def main():
         for object in data.debris_list:
             lat, lon = data.get_location(object, [])
             x, y = data.convert(lat, lon)
-            pygame.draw.circle(surface, [255, 0, 0], [x, y], 1)
-
+            pygame.draw.circle(surface, [255, 0, 0], [x, y], 2)
+ 
         pygame.display.update()
 
         # UPDATE
@@ -43,7 +43,7 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
     
-        clock.tick(30)
+        print(clock.tick(30))
     exit()
     # END
 
