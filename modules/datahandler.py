@@ -60,7 +60,7 @@ class DataHandler:
     def convert(self, lat, lon):
         x = lat / 0.28125
         x = 1280/2 + x
-        y = lon / 0.28125
+        y = lon / 0.25
         y = 720/2 + y
 
         return x, y

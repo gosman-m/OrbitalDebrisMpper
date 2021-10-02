@@ -28,7 +28,7 @@ def main():
         surface.blit(world_map, [0, 0])
 
         for object in data.debris_list:
-            lat, lon = data.get_location(object, [])
+            lon, lat = data.get_location(object, [])
             x, y = data.convert(lat, lon)
             pygame.draw.circle(surface, [255, 0, 0], [x, y], 2)
  
