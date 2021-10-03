@@ -2,11 +2,13 @@ import ephem
 
 
 class Object:
-    def __init__(self, index, name, line1, line2):
+    def __init__(self, index, name, line1, line2, x, y):
         self.index = index
         self.name = name
         self.line1 = line1
         self.line2 = line2
+        self.x = x
+        self.y = y
 
 
 class DataHandler:
@@ -30,8 +32,8 @@ class DataHandler:
                     line1 = data_line
                 elif data_line[0] == '2':
                     line2 = data_line
-                    
-                    self.debris_list.append(Object(index, name, line1, line2))
+                                        
+                    self.debris_list.append(Object(index, name, line1, line2, 0, 0))
 
                     active = False
                     index += 1
@@ -55,7 +57,13 @@ class DataHandler:
         else:
             location.compute()
 
-        return location.sublat/ephem.degree, location.sublong/ephem.degree
+        return location.sublong/ephem.degree, location.sublat/ephem.degree 
+
+    def update_location(self, sat):
+        lat, lon = self.get_location(sat, [])
+        x, y = self.convert(lat, lon)
+        sat.x = x
+        sat.y = y
 
     def convert(self, lat, lon):
         x = lat / 0.28125
