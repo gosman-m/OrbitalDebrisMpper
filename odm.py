@@ -1,9 +1,11 @@
 from modules import datahandler
 import pygame
-
+import ctypes
 
 def main():
     
+    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0 )
+
     data = datahandler.DataHandler()
 
     pygame.init()
